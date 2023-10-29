@@ -68,7 +68,7 @@ bool tablero::adyacentcelds(unsigned short fila, unsigned short columna){
     }else
         arriba=false;
 
-    if (columna!=columnas){
+    if (columna!=(columnas-1)){
     if(getvalue(fila,columna+1)=='-'){
         abajo=sandwichCheck(fila,columna,0,+1);
     }else
@@ -84,28 +84,28 @@ bool tablero::adyacentcelds(unsigned short fila, unsigned short columna){
     }
     else izquierda=false;
 
-    if(fila!=filas){
+    if(fila!=filas-1){
     if(getvalue(fila+1,columna)=='-'){
         derecha=sandwichCheck(fila,columna,1,0);}
     else
         derecha=false;
     }else derecha=false;
 
-    if(columna!=columnas && fila!=filas){
+    if(columna!=columnas-1 && fila!=filas-1){
     if(getvalue(fila+1,columna+1)=='-'){
         diagonal1=sandwichCheck(fila,columna,1,1);}
     else
         diagonal1=false;
     }else diagonal1=false;
 
-    if(columna!=columnas && fila!=0){
+    if(columna!=columnas-1 && fila!=0){
     if(getvalue(fila-1,columna+1)=='-'){
         diagonal2=sandwichCheck(fila,columna,-1,1);}
     else
         diagonal2=false;
     }else diagonal2=false;
 
-    if(columna!=0 && fila!=filas){
+    if(columna!=0 && fila!=filas-1){
     if(getvalue(fila+1,columna-1)=='-'){
         diagonal3=sandwichCheck(fila,columna,1,-1);}
     else diagonal3=false;
