@@ -61,34 +61,34 @@ void tablero::movimientosposibles(){
 bool tablero::adyacentcelds(unsigned short fila, unsigned short columna){
     bool arriba,abajo,izquierda,derecha,diagonal1,diagonal2,diagonal3,diagonal4,flag;
     if(columna!=0){
-    if(getvalue(fila,columna-1)=='-'){
+        if(getvalue(fila,columna-1)=='-'){
         arriba=sandwichCheck(fila,columna,0,-1);
-    }else
-        arriba=false;
+        }else
+            arriba=false;
     }else
         arriba=false;
 
     if (columna!=(columnas-1)){
-    if(getvalue(fila,columna+1)=='-'){
-        abajo=sandwichCheck(fila,columna,0,+1);
-    }else
-        abajo=false;
+        if(getvalue(fila,columna+1)=='-'){
+            abajo=sandwichCheck(fila,columna,0,+1);
+        }else
+            abajo=false;
     }
     else abajo=false;
 
     if(fila!=0){
-    if(getvalue(fila-1,columna)=='-'){
-        izquierda=sandwichCheck(fila,columna,-1,0);
-    }else
-        izquierda=false;
+        if(getvalue(fila-1,columna)=='-'){
+            izquierda=sandwichCheck(fila,columna,-1,0);
+        }else
+            izquierda=false;
     }
     else izquierda=false;
 
     if(fila!=filas-1){
-    if(getvalue(fila+1,columna)=='-'){
-        derecha=sandwichCheck(fila,columna,1,0);}
-    else
-        derecha=false;
+        if(getvalue(fila+1,columna)=='-'){
+            derecha=sandwichCheck(fila,columna,1,0);}
+        else
+            derecha=false;
     }else derecha=false;
 
     if(columna!=columnas-1 && fila!=filas-1){

@@ -2,13 +2,19 @@
 #define GAME_H
 #include <fstream>
 #include<tablero.h>
+#include <sstream>
+#include <ctime>
 using namespace std;
 
 class game
 {
 public:
     game();
-    void start_game();
+    void print_register();
+    void update_register();
+    string hour();
+    string date();
+    void update_register(string player1, string player2, string winner, string score  );
 };
 
 #endif // GAME_H
