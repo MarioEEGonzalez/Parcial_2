@@ -7,6 +7,6 @@ int main()
 
 
     tablero tablero1;
-    tablero1.imprimir_matriz();
+    tablero1.movimientosposibles();
      return 0;
 }
