@@ -1,2 +1,2 @@
 # Parcial_2
- Mario Estrada- Andres
+ Mario Estrada- Andres Agudelo
