@@ -16,6 +16,7 @@ public:
 public:
     tablero();
     void imprimir_matriz( );
+
 };
 
 #endif // TABLERO_H
