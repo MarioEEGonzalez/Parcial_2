@@ -9,11 +9,13 @@ using namespace std;
 class tablero
 {
 public:
-    string ** matriz;
+    char ** matriz;
+    int filas = 8,columnas = 8;
     int cant_negras, cant_blancas,cant_vacios;
 
 public:
-    tablero(int filas,int columnas);
+    tablero();
+    void imprimir_matriz( );
 };
 
 #endif // TABLERO_H
