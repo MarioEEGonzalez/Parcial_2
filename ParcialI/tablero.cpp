@@ -51,8 +51,8 @@ char tablero::otroturno(char turnoactual)
         return otroturno;
 }
 
-short unsigned tablero::movimientosposibles(char turnoactual){
-        short unsigned cantmovimientosposibles=0;
+void tablero::movimientosposibles(char turnoactual){
+   cantmovimientosposibles=0;
     cout<<"  A B C D E F G H"<<endl;
     for (int i = 0; i<filas; i++){
         cout<<i<<" ";
@@ -73,7 +73,7 @@ short unsigned tablero::movimientosposibles(char turnoactual){
 
     }
     cout<<"  A B C D E F G H"<<endl;
-    return cantmovimientosposibles;
+
 }
 bool tablero::adyacentcelds(unsigned short fila, unsigned short columna, char turnoactual){
     char otroturn=otroturno(turnoactual);
@@ -218,7 +218,7 @@ void tablero::insert_piece(player jugador){
             cout<<"En la ubicacion ingresada no posible colocar una ficha";
         }
     }
-
+    cant_vacios--;
 }
 void tablero::change_color(unsigned short fila, unsigned short columna, short sumax, short sumay,player jugador){
     bool flag=checklimits(fila,columna,sumax,sumay);
