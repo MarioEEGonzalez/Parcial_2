@@ -18,11 +18,11 @@ public:
     void imprimir_matriz( );
 
 
-
-    void movimientosposibles();
+    char otroturno(char turnoactual);
+    short unsigned movimientosposibles(char turnoactual);
     char getvalue(int fila, int columna);
-    bool sandwichCheck(unsigned short fila, unsigned short columna, short sumax, short sumay);
-    bool adyacentcelds(unsigned short fila, unsigned short columna);
+    bool sandwichCheck(unsigned short fila, unsigned short columna, short sumax, short sumay,char micaracter);
+    bool adyacentcelds(unsigned short fila, unsigned short columna, char turnoactual);
     bool checklimits(unsigned short fila, unsigned short columna, short sumax, short sumay);
 
 };

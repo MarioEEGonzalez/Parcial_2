@@ -8,13 +8,14 @@ class player
 
 public:
     player();
-    player(string usuario, string pieza);
+    player(string usuario, char pieza);
+    char getpieza();
 
 private:
     string name;
     bool turn;
     short unsigned score;
-    string piece;
+    char piece;
 
 };
 

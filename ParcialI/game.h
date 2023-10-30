@@ -4,7 +4,6 @@
 #include<tablero.h>
 #include <sstream>
 #include <ctime>
-using namespace std;
 
 class game
 {

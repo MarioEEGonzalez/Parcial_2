@@ -6,17 +6,20 @@ player::player()
 
 }
 
-player::player(string usuario, string pieza)
+player::player(string usuario, char pieza)
 {
     name=usuario;
     piece=pieza;
     score=0;
-    if(piece=="-"){
+    if(piece=='-'){
         turn=true;
-    }else if(piece=="*"){
+    }else if(piece=='*'){
         turn=false;
     }else{
         std::cout<<"Error en la creacion de usuario";
     }
 
+}
+char player::getpieza(){
+    return piece;
 }
