@@ -1,9 +1,42 @@
 #include "game.h"
 #include <iostream>
 #include <fstream>
+#include <string>
+#include "player.h"
+#include "tablero.h"
 using namespace std;
 game::game()
 {
+
+}
+void game::startgame(){
+
+    string n="0";
+    cout<<"________________________________________"<<endl;
+    cout<<"Bienvenido, que accion desea realizar: "<<endl;
+    cout<<"1. Visualizar registros."<<endl;
+    cout<<"2. Nueva partida."<<endl;
+    cin>>n;
+    if(n=="1"){
+
+    }else if(n=="2"){
+        nuevapartida();
+    }else{
+        cout<<"Opcion invalida";
+        startgame();
+    }
+
+
+}
+void game::nuevapartida()
+{
+    string use1,use2;
+    cout<<"Ingrese el nombre del jugador que maneja las negras: ";
+    cin>>use1;
+    cout<<"Ingrese el nombre del jugador que maneja las blancas: ";
+    cin>>use2;
+    player usuarionegro(use1,"-"),usuarioblanco(use2,"*");
+    tablero tablero1;
 
 }
 void game::print_register(){

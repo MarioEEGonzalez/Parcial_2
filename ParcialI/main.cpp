@@ -6,15 +6,15 @@
 int main()
 {
 
-    /*
+    game juego;
+    juego.startgame();
     tablero tablero1;
     tablero1.movimientosposibles();
-    */
 
 
 
 
-    game juego;
+
 
 
 return 0;

@@ -2,8 +2,6 @@
 #define TABLERO_H
 #include <iostream>
 #include <string>
-#define myturn *;
-#define otherturn -;
 #include "player.h"
 using namespace std;
 

@@ -10,8 +10,11 @@ class game
 {
 public:
     game();
+
     void print_register();
     void update_register();
+    void nuevapartida();
+    void startgame();
     string hour();
     string date();
     void update_register(string player1, string player2, string winner, string score  );
