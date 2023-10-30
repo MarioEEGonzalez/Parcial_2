@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "player.h"
+
 using namespace std;
 
 
@@ -11,15 +12,15 @@ class tablero
 public:
     char ** matriz;
     int filas = 8,columnas = 8;
-    int cant_negras, cant_blancas,cant_vacios;
-
+    int cant_negras = 2, cant_blancas= 2,cant_vacios=60;
+    short unsigned cantmovimientosposibles;
 public:
     tablero();
     void imprimir_matriz( );
 
 
     char otroturno(char turnoactual);
-    short unsigned movimientosposibles(char turnoactual);
+    void movimientosposibles(char turnoactual);
     char getvalue(int fila, int columna);
     bool sandwichCheck(unsigned short fila, unsigned short columna, short sumax, short sumay,char micaracter);
     bool adyacentcelds(unsigned short fila, unsigned short columna, char turnoactual);
