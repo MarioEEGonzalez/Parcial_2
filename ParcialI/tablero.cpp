@@ -74,6 +74,7 @@ void tablero::movimientosposibles(char turnoactual){
     }
     cout<<"  A B C D E F G H"<<endl;
 
+
 }
 bool tablero::adyacentcelds(unsigned short fila, unsigned short columna, char turnoactual){
     char otroturn=otroturno(turnoactual);
@@ -222,6 +223,7 @@ void tablero::insert_piece(player jugador){
 }
 void tablero::change_color(unsigned short fila, unsigned short columna, short sumax, short sumay,player jugador){
     bool flag=checklimits(fila,columna,sumax,sumay);
+    unsigned short changes = 1;
     char color_opuesto;
     if (jugador.getpieza()== '*'){
         color_opuesto = '-';
@@ -236,6 +238,7 @@ void tablero::change_color(unsigned short fila, unsigned short columna, short su
 
         if(matriz[fila+sumax][columna+sumay]== color_opuesto){
             matriz[fila+sumax][columna+sumay]= jugador.getpieza();
+            changes++;
             flag= true;
         }
         else if(matriz[fila+sumax][columna+sumay]==jugador.getpieza()){
@@ -245,5 +248,12 @@ void tablero::change_color(unsigned short fila, unsigned short columna, short su
             change_color(fila+sumax,columna+sumay,sumax,sumay,jugador);
         }
     }
-
+    if (jugador.getpieza()== '*'){
+        cant_blancas= cant_blancas + changes;
+        cant_negras = cant_negras - changes
+    }
+    else{
+        cant_blancas= cant_blancas - changes;
+        cant_negras = cant_negras +  changes
+    }
 }
