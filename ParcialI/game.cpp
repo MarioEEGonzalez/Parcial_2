@@ -20,6 +20,7 @@ void game::startgame(){
 
     }else if(n=="2"){
         nuevapartida();
+
     }else{
         std::cout<<"Opcion invalida";
         startgame();

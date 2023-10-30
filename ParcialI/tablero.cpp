@@ -176,42 +176,42 @@ char tablero::getvalue(int fila, int columna){
 }
 void tablero::insert_piece(player jugador){
     int z= 0;
-    bool arriba,abajo,izquierda,derecha,diagonal1,diagonal2,diagonal3 , diagonal4;
-    char fila_aux;
+    char colum_aux;
     unsigned short fila, columna;
     while (z == 0){
-        cout<<"Ingrese la  letra de la fila donde se ubicara la ficha"<<endl;
-        cin >> fila_aux;
-        fila = char(fila_aux)-65;
-        cout<<"ingerese el numero de la columna donde se ubicara la ficha "<<endl;
-        cin>>columna;
-        if (adyacentcelds(fila,columna)){
-            if (jugador.piece == "*"){
-                if (sandwichCheck(fila,columna, 0, -1)){//arriba{
-                    change_color(fila,columna, 0, -1);
-                }
-                if(sandwichCheck(fila,columna, 0, 1)){//abajo
-                    change_color(fila,columna, 0, 1);
-                }
-                if(sandwichCheck(fila,columna, -1, 0)){//izquierda
-                    change_color(fila,columna, -1, 0);
-                }
-                if(sandwichCheck(fila,columna, 1, 0)){//derecha
-                    change_color(fila,columna, 1, 0);
-                }
-                if(sandwichCheck(fila,columna, 1, 1)){//diagonal derecha abajo
-                    change_color(fila,columna, 1, 1);
-                }
-                if(sandwichCheck(fila,columna, 1, -1)){//diagonal derecha arriba
-                    change_color(fila,columna, 1, -1);
-                }
-                if (sandwichCheck(fila,columna, -1, -1)){//diagonal izquierda arriba
-                    change_color(fila,columna, -1, -1);
-                }
-                if(sandwichCheck(fila,columna, -1, 1)){//diagonal derecha abajo
-                    change_color(fila,columna, -1, 1);
-                }
+        cout<<"Ingrese la  letra de la columna donde se ubicara la ficha en letras mayusculas"<<endl;
+        cin >> colum_aux;
+        columna = char(colum_aux)-65;
+        cout<<"ingerese el numero de la fila donde se ubicara la ficha "<<endl;
+        cin>>fila;
+        char color = jugador.getpieza();
+        if (adyacentcelds(fila,columna,color)){
+
+            if (sandwichCheck(fila,columna, 0, -1,color)){//arriba{
+                change_color(fila,columna, 0, -1,jugador);
             }
+            if(sandwichCheck(fila,columna, 0, 1,color)){//abajo
+                change_color(fila,columna, 0, 1,jugador);
+            }
+            if(sandwichCheck(fila,columna, -1, 0,color)){//izquierda
+                change_color(fila,columna, -1, 0,jugador);
+            }
+            if(sandwichCheck(fila,columna, 1, 0,color)){//derecha
+                change_color(fila,columna, 1, 0,jugador);
+            }
+            if(sandwichCheck(fila,columna, 1, 1,color)){//diagonal derecha abajo
+                change_color(fila,columna, 1, 1,jugador);
+            }
+            if(sandwichCheck(fila,columna, 1, -1,color)){//diagonal derecha arriba
+                change_color(fila,columna, 1, -1,jugador);
+            }
+            if (sandwichCheck(fila,columna, -1, -1,color)){//diagonal izquierda arriba
+                change_color(fila,columna, -1, -1,jugador);
+            }
+            if(sandwichCheck(fila,columna, -1, 1,color)){//diagonal derecha abajo
+                change_color(fila,columna, -1, 1,jugador);
+            }
+
             z=1;
         }
         else{
@@ -220,18 +220,29 @@ void tablero::insert_piece(player jugador){
     }
 
 }
-void tablero::change_color(unsigned short fila, unsigned short columna, short sumax, short sumay){
+void tablero::change_color(unsigned short fila, unsigned short columna, short sumax, short sumay,player jugador){
     bool flag=checklimits(fila,columna,sumax,sumay);
+    char color_opuesto;
+    if (jugador.getpieza()== '*'){
+        color_opuesto = '-';
+    }
+    else{
+        color_opuesto= '*';
+    }
+
+    matriz[fila][columna]= jugador.getpieza();
     if(flag ){
-        if(matriz[fila+sumax][columna+sumay]=='-'){
-            matriz[fila+sumax][columna+sumay]= '*';
+
+
+        if(matriz[fila+sumax][columna+sumay]== color_opuesto){
+            matriz[fila+sumax][columna+sumay]= jugador.getpieza();
             flag= true;
         }
-        else if(matriz[fila+sumax][columna+sumay]=='*'){
+        else if(matriz[fila+sumax][columna+sumay]==jugador.getpieza()){
             flag=false;
         }
-        else{
-            change_color(fila+sumax,columna+sumay,sumax,sumay);
+        else {
+            change_color(fila+sumax,columna+sumay,sumax,sumay,jugador);
         }
     }
 
