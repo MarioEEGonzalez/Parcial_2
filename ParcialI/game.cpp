@@ -51,7 +51,7 @@ void game::print_register(){
 
     string linea;
     while (getline(registro, linea)) {
-        // Procesa la línea como desees
+
         cout << linea << endl;
     }
 
