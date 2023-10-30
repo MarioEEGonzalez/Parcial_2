@@ -38,8 +38,10 @@ void game::nuevapartida()
     std::getline(std::cin,use2);
     player usuarionegro(use1,'-'),usuarioblanco(use2,'*');
     tablero tablero1;
-    tablero1.movimientosposibles(usuarionegro.getpieza());
+    while (tablero1.cantmovimientosposibles != 0){
 
+    tablero1.movimientosposibles(usuarionegro.getpieza());
+    }
 }
 void game::print_register(){
     fstream registro;
