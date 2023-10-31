@@ -37,6 +37,19 @@ void tablero::imprimir_matriz(){
     cout<<"  A B C D E F G H"<<endl;
 }
 
+short tablero::validacionentrada1(char entrada)
+{
+    short retu;
+    if(entrada>65 &&entrada<72){
+        retu=entrada-65;
+    }else if(entrada>97 &&entrada<104){
+        retu=entrada-97;
+    }else{
+        retu=-1;
+    }
+    return retu;
+}
+
 char tablero::otroturno(char turnoactual)
 {
     char otroturno;
@@ -178,15 +191,15 @@ char tablero::getvalue(int fila, int columna){
 void tablero::insert_piece(player jugador){
     int z= 0;
     char colum_aux;
-    unsigned short fila, columna;
+    short fila, columna;
     while (z == 0){
-        cout<<"Ingrese la  letra de la columna donde se ubicara la ficha en letras mayusculas"<<endl;
+        cout<<"Ingrese la  letra de la columna donde se ubicara la ficha"<<endl;
         cin >> colum_aux;
-        columna = char(colum_aux)-65;
+        columna=validacionentrada1(colum_aux);
         cout<<"ingerese el numero de la fila donde se ubicara la ficha "<<endl;
         cin>>fila;
         char color = jugador.getpieza();
-        if (adyacentcelds(fila,columna,color)&&getvalue(fila,columna)!='0'){
+        if (columna!=-1&&adyacentcelds(fila,columna,color)&&getvalue(fila,columna)!='0'){
 
             if (sandwichCheck(fila,columna, 0, -1,color)){//arriba{
                 change_color(fila,columna, 0, -1,jugador);
