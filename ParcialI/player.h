@@ -10,10 +10,10 @@ public:
     player();
     player(string usuario, char pieza);
     char getpieza();
-
+    bool turn;
 private:
     string name;
-    bool turn;
+
     short unsigned score;
     char piece;
 

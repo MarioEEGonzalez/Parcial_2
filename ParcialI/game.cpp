@@ -38,11 +38,38 @@ void game::nuevapartida()
     std::getline(std::cin,use2);
     player usuarionegro(use1,'-'),usuarioblanco(use2,'*');
     tablero tablero1;
-    while (tablero1.cantmovimientosposibles != 0){
+    unsigned short z = 0;
+    while (tablero1.cant_vacios != 0 && z < 2){
 
-    tablero1.movimientosposibles(usuarionegro.getpieza());
+        if (usuarionegro.turn){
+            tablero1.movimientosposibles(usuarionegro.getpieza());
+            if (tablero1.cantmovimientosposibles != 0){
+                tablero1.insert_piece(usuarionegro);
+                z=0;
+            }
+            else{
+                usuarioblanco.turn = true;
+                usuarionegro.turn = false;
+                z++;
+            }
+        }
+        else if (usuarioblanco.turn){
+            tablero1.movimientosposibles(usuarionegro.getpieza());
+            if (tablero1.cantmovimientosposibles != 0){
+                tablero1.insert_piece(usuarionegro);
+                z= 0;
+            }
+            else{
+                usuarioblanco.turn = true;
+                usuarionegro.turn = false;
+                z++;
+            }
+        }
     }
+
+
 }
+
 void game::print_register(){
     fstream registro;
     registro.open("registros.txt",ios::in | ios::out);

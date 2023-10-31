@@ -250,10 +250,10 @@ void tablero::change_color(unsigned short fila, unsigned short columna, short su
     }
     if (jugador.getpieza()== '*'){
         cant_blancas= cant_blancas + changes;
-        cant_negras = cant_negras - changes
+        cant_negras = cant_negras - changes;
     }
     else{
         cant_blancas= cant_blancas - changes;
-        cant_negras = cant_negras +  changes
+        cant_negras = cant_negras +  changes;
     }
 }
