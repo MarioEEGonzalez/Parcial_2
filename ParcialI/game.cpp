@@ -54,7 +54,7 @@ void game::nuevapartida()
             }
         }
         else if (usuarioblanco.turn){
-            tablero1.movimientosposibles(usuarionegro.getpieza());
+            tablero1.movimientosposibles(usuarioblanco.getpieza());
             if (tablero1.cantmovimientosposibles != 0){
                 tablero1.insert_piece(usuarionegro);
                 z= 0;
