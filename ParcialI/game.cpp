@@ -21,6 +21,7 @@ void game::startgame(){
         startgame();
     }else if(n=="2"){
         nuevapartida();
+        startgame();
 
     }else{
         std::cout<<"Opcion invalida";
@@ -81,6 +82,7 @@ void game::nuevapartida()
         score = tablero1.cant_blancas;
     }
     update_register(usuarionegro.name,usuarioblanco.name,winner,score);
+    print_register();
 }
 
 void game::print_register(){
@@ -102,7 +104,7 @@ void game::print_register(){
 }
 
 void game::update_register(string player1, string player2, string winner, string score ){
-    string new_string = "";
+    string new_string = "\n";
     string  hora= hour();
     string fecha = date();
     new_string= new_string + player1+"    "+ player2+"   " + hora + "  "+ fecha +"   "+ winner +"     "+ score;
