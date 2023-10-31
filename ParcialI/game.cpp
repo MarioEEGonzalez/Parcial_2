@@ -58,14 +58,14 @@ void game::nuevapartida()
         else if (usuarioblanco.turn){
             tablero1.movimientosposibles(usuarioblanco.getpieza());
             if (tablero1.cantmovimientosposibles != 0){
-                tablero1.insert_piece(usuarionegro);
-                usuarioblanco.turn = true;
-                usuarionegro.turn = false;
+                tablero1.insert_piece(usuarioblanco);
+                usuarionegro.turn = true;
+                usuarioblanco.turn = false;
                 z= 0;
             }
             else{
-                usuarioblanco.turn = true;
-                usuarionegro.turn = false;
+                usuarionegro.turn = true;
+                usuarioblanco.turn = false;
                 z++;
             }
         }

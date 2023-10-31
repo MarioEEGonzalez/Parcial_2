@@ -11,6 +11,7 @@ player::player(string usuario, char pieza)
     name=usuario;
     piece=pieza;
     score=0;
+
     if(piece=='-'){
         turn=true;
     }else if(piece=='*'){
