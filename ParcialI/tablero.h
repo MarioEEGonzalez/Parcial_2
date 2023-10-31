@@ -17,7 +17,7 @@ public:
 public:
     tablero();
     void imprimir_matriz( );
-
+    short validacionentrada1(char entrada);
 
     char otroturno(char turnoactual);
     void movimientosposibles(char turnoactual);
