@@ -216,7 +216,7 @@ void tablero::insert_piece(player jugador){
             z=1;
         }
         else{
-            cout<<"En la ubicacion ingresada no posible colocar una ficha";
+            cout<<"En la ubicacion ingresada no posible colocar una ficha"<<endl;
         }
     }
     cant_vacios--;
