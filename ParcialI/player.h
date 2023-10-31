@@ -11,7 +11,7 @@ public:
     player(string usuario, char pieza);
     char getpieza();
     bool turn;
-private:
+
     string name;
     short unsigned score;
     char piece;

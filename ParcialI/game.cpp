@@ -17,7 +17,8 @@ void game::startgame(){
     std::cout<<"2. Nueva partida."<<endl;
     std::cin>>n;
     if(n=="1"){
-
+        print_register();
+        startgame();
     }else if(n=="2"){
         nuevapartida();
 
@@ -30,6 +31,7 @@ void game::startgame(){
 }
 void game::nuevapartida()
 {
+    string winner,score;
     string use1,use2,X;
     std::getline(std::cin,X);
     std::cout<<"Ingrese el nombre del jugador que maneja las negras: ";
@@ -70,8 +72,15 @@ void game::nuevapartida()
             }
         }
     }
-
-
+    if (tablero1.cant_negras> tablero1.cant_blancas){
+        winner = usuarionegro.name;
+        score = tablero1.cant_negras;
+    }
+    else {
+        winner = usuarioblanco.name;
+        score = tablero1.cant_blancas;
+    }
+    update_register(usuarionegro.name,usuarioblanco.name,winner,score);
 }
 
 void game::print_register(){
