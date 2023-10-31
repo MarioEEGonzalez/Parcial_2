@@ -13,7 +13,6 @@ public:
     bool turn;
 private:
     string name;
-
     short unsigned score;
     char piece;
 
