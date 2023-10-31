@@ -1,0 +1,5 @@
+JUGADOR1   JUGADOR2    FECHA    HORA    GANADOR     PUNTAJE
+
+fasfsd    fdgdsg   16:42:13  2023/10/31   fdgdsg     
+
+Mario    Esteban   17:14:54  2023/10/31   Esteban     

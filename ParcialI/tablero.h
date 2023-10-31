@@ -12,12 +12,13 @@ class tablero
 public:
     char ** matriz;
     int filas = 8,columnas = 8;
-    int cant_negras = 2, cant_blancas= 2,cant_vacios=60;
+    int cant_negras = 2 ,cant_blancas = 2,cant_vacios;
     short unsigned cantmovimientosposibles;
 public:
     tablero();
     void imprimir_matriz( );
     short validacionentrada1(char entrada);
+    int validacion_entrada_fila(int fila);
 
     char otroturno(char turnoactual);
     void movimientosposibles(char turnoactual);

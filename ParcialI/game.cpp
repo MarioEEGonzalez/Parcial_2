@@ -45,6 +45,7 @@ void game::nuevapartida()
     while (tablero1.cant_vacios != 0 && z < 2){
 
         if (usuarionegro.turn){
+            cout<<endl<<"Turno de "<<usuarionegro.name<<endl;
             tablero1.movimientosposibles(usuarionegro.getpieza());
             if (tablero1.cantmovimientosposibles != 0){
                 tablero1.insert_piece(usuarionegro);
@@ -59,6 +60,7 @@ void game::nuevapartida()
             }
         }
         else if (usuarioblanco.turn){
+            cout<<endl<<"Turno de "<<usuarioblanco.name<<endl;
             tablero1.movimientosposibles(usuarioblanco.getpieza());
             if (tablero1.cantmovimientosposibles != 0){
                 tablero1.insert_piece(usuarioblanco);

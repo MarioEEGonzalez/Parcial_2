@@ -1,6 +1,6 @@
 #include "tablero.h"
 tablero::tablero(){
-
+    cant_vacios= ((columnas*filas) - cant_blancas -cant_negras);
     matriz =  new char* [filas];
 
         for (unsigned short i = 0;i<filas;i++){
@@ -50,6 +50,19 @@ short tablero::validacionentrada1(char entrada)
     return retu;
 }
 
+int tablero::validacion_entrada_fila(int fila){
+
+    if (cin.fail()|| fila<0 || fila> columnas){
+        cin.clear();
+        cin.ignore(100, '\n');
+        return -1;
+    }
+    else if (fila>0 && fila <columnas){
+        return fila;
+
+    }
+}
+
 char tablero::otroturno(char turnoactual)
 {
     char otroturno;
@@ -66,11 +79,21 @@ char tablero::otroturno(char turnoactual)
 
 void tablero::movimientosposibles(char turnoactual){
    cantmovimientosposibles=0;
+   cant_blancas = 0;
+   cant_negras = 0;
+
     cout<<"  A B C D E F G H"<<endl;
     for (int i = 0; i<filas; i++){
         cout<<i<<" ";
         for (int u = 0; u<columnas; u++ ){
-            if(matriz[i][u]=='o'){
+            if (matriz[i][u]=='*'){
+                cant_blancas++;
+            }
+            if (matriz[i][u]=='-'){
+                cant_negras++;
+            }
+
+             if(matriz[i][u]=='o'){
                 bool status=adyacentcelds(i,u,turnoactual);
                 if(status){
                     cout<<"X"<<" ";
@@ -78,7 +101,9 @@ void tablero::movimientosposibles(char turnoactual){
                 }else
                     cout<<'o'<<" ";
 
-            }else
+            }
+
+            else
                 cout<< matriz[i][u]<< " ";
         }
         cout<<i<<" ";
@@ -172,12 +197,12 @@ bool tablero::sandwichCheck(unsigned short fila, unsigned short columna, short s
 }
 bool tablero:: checklimits(unsigned short fila, unsigned short columna, short sumax, short sumay){
     bool flag=true;
-    if(fila==filas-1||fila==0){
+    if(fila==filas-1||fila<0){
         if(sumax!=0){
             flag= false;
         }
     }
-    if(columna==columnas-1||columna==0){
+    if(columna==columnas-1||columna<0){
         if(sumay!=0){
             flag= false;
         }
@@ -191,42 +216,46 @@ char tablero::getvalue(int fila, int columna){
 void tablero::insert_piece(player jugador){
     int z= 0;
     char colum_aux;
-    short fila, columna;
+    short columna;
+    int fila;
     while (z == 0){
         cout<<"Ingrese la  letra de la columna donde se ubicara la ficha"<<endl;
         cin >> colum_aux;
         columna=validacionentrada1(colum_aux);
         cout<<"ingerese el numero de la fila donde se ubicara la ficha "<<endl;
         cin>>fila;
+        fila =validacion_entrada_fila(fila);
         char color = jugador.getpieza();
-        if (columna!=-1&&adyacentcelds(fila,columna,color)&&getvalue(fila,columna)!='0'){
+        if (columna != -1 && fila != -1){
+            if (adyacentcelds(fila,columna,color)&&getvalue(fila,columna)!='0'){
 
-            if (sandwichCheck(fila,columna, 0, -1,color)){//arriba{
-                change_color(fila,columna, 0, -1,jugador);
-            }
-            if(sandwichCheck(fila,columna, 0, 1,color)){//abajo
-                change_color(fila,columna, 0, 1,jugador);
-            }
-            if(sandwichCheck(fila,columna, -1, 0,color)){//izquierda
-                change_color(fila,columna, -1, 0,jugador);
-            }
-            if(sandwichCheck(fila,columna, 1, 0,color)){//derecha
-                change_color(fila,columna, 1, 0,jugador);
-            }
-            if(sandwichCheck(fila,columna, 1, 1,color)){//diagonal derecha abajo
-                change_color(fila,columna, 1, 1,jugador);
-            }
-            if(sandwichCheck(fila,columna, 1, -1,color)){//diagonal derecha arriba
-                change_color(fila,columna, 1, -1,jugador);
-            }
-            if (sandwichCheck(fila,columna, -1, -1,color)){//diagonal izquierda arriba
-                change_color(fila,columna, -1, -1,jugador);
-            }
-            if(sandwichCheck(fila,columna, -1, 1,color)){//diagonal derecha abajo
-                change_color(fila,columna, -1, 1,jugador);
-            }
+                if (sandwichCheck(fila,columna, 0, -1,color)){//arriba{
+                    change_color(fila,columna, 0, -1,jugador);
+                }
+                if(sandwichCheck(fila,columna, 0, 1,color)){//abajo
+                    change_color(fila,columna, 0, 1,jugador);
+                }
+                if(sandwichCheck(fila,columna, -1, 0,color)){//izquierda
+                    change_color(fila,columna, -1, 0,jugador);
+                }
+                if(sandwichCheck(fila,columna, 1, 0,color)){//derecha
+                    change_color(fila,columna, 1, 0,jugador);
+                }
+                if(sandwichCheck(fila,columna, 1, 1,color)){//diagonal derecha abajo
+                    change_color(fila,columna, 1, 1,jugador);
+                }
+                if(sandwichCheck(fila,columna, 1, -1,color)){//diagonal derecha arriba
+                    change_color(fila,columna, 1, -1,jugador);
+                }
+                if (sandwichCheck(fila,columna, -1, -1,color)){//diagonal izquierda arriba
+                    change_color(fila,columna, -1, -1,jugador);
+                }
+                if(sandwichCheck(fila,columna, -1, 1,color)){//diagonal derecha abajo
+                    change_color(fila,columna, -1, 1,jugador);
+                }
 
-            z=1;
+                z=1;
+            }
         }
         else{
             cout<<"En la ubicacion ingresada no posible colocar una ficha"<<endl;
@@ -262,12 +291,5 @@ void tablero::change_color(unsigned short fila, unsigned short columna, short su
 
         }
     }
-    if (jugador.getpieza()== '*'){
-        cant_blancas= cant_blancas + changes;
-        cant_negras = cant_negras - changes;
-    }
-    else{
-        cant_blancas= cant_blancas - changes;
-        cant_negras = cant_negras +  changes;
-    }
+
 }
