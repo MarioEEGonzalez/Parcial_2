@@ -1,1 +1,1 @@
-jugador1    jugador 2     fecha     hora     ganador     puntaje
+JUGADOR1   JUGADOR2    FECHA    HORA    GANADOR     PUNTAJE
