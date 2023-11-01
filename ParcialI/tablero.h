@@ -26,6 +26,7 @@ public:
     bool sandwichCheck(unsigned short fila, unsigned short columna, short sumax, short sumay,char micaracter);
     bool adyacentcelds(unsigned short fila, unsigned short columna, char turnoactual);
     bool checklimits(unsigned short fila, unsigned short columna, short sumax, short sumay);
+    bool checklimits2(unsigned short fila, unsigned short columna, short sumax, short sumay);
     void insert_piece(player jugador);
     void change_color(unsigned short fila, unsigned short columna, short sumax, short sumay,player jugador);
 

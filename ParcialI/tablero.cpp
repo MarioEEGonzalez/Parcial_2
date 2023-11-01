@@ -40,9 +40,9 @@ void tablero::imprimir_matriz(){
 short tablero::validacionentrada1(char entrada)
 {
     short retu;
-    if(entrada>65 &&entrada<72){
+    if(entrada>=65 &&entrada<=72){
         retu=entrada-65;
-    }else if(entrada>97 &&entrada<104){
+    }else if(entrada>=97 &&entrada<=104){
         retu=entrada-97;
     }else{
         retu=-1;
@@ -183,10 +183,10 @@ bool tablero::adyacentcelds(unsigned short fila, unsigned short columna, char tu
 bool tablero::sandwichCheck(unsigned short fila, unsigned short columna, short sumax, short sumay,char micaracter){
     bool flag=checklimits(fila,columna,sumax,sumay);
     if(flag){
-        if(matriz[fila+sumax][columna+sumay]=='o'){
+    if(checklimits2(fila,columna,sumax,sumay)&&matriz[fila+sumax][columna+sumay]=='o'){
           flag= false;
         }
-        else if(matriz[fila+sumax][columna+sumay]==micaracter){
+        else if(checklimits2(fila,columna,sumax,sumay)&&matriz[fila+sumax][columna+sumay]==micaracter){
           flag=true;
         }
         else{
@@ -197,18 +197,35 @@ bool tablero::sandwichCheck(unsigned short fila, unsigned short columna, short s
 }
 bool tablero:: checklimits(unsigned short fila, unsigned short columna, short sumax, short sumay){
     bool flag=true;
-    if(fila==filas-1||fila<0){
+    if(fila>filas-1||fila<0){
         if(sumax!=0){
             flag= false;
         }
     }
-    if(columna==columnas-1||columna<0){
+    if(columna>columnas-1||columna<0){
         if(sumay!=0){
             flag= false;
         }
     }
     return flag;
 }
+
+bool tablero::checklimits2(unsigned short fila,unsigned  short columna, short sumax, short sumay)
+{
+    bool flag=true;
+    if(fila==filas-1||fila==0){
+        if(sumax!=0){
+            flag= false;
+        }
+    }
+    if(columna==columnas-1||columna==0){
+        if(sumay!=0){
+            flag= false;
+        }
+    }
+    return flag;
+}
+
 char tablero::getvalue(int fila, int columna){
     return matriz[fila][columna];
 
