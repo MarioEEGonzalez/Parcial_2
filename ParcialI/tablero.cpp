@@ -55,7 +55,7 @@ int tablero::validacion_entrada_fila(int fila){
     if (cin.fail()|| fila<0 || fila> columnas){
         cin.clear();
         cin.ignore(100, '\n');
-        return -1;
+        return 0;
     }
     else if (fila>0 && fila <columnas){
         return fila;
@@ -82,9 +82,9 @@ void tablero::movimientosposibles(char turnoactual){
    cant_blancas = 0;
    cant_negras = 0;
 
-    cout<<"  A B C D E F G H"<<endl;
+    cout<<"    A     B     C     D     E     F     G     H"<<endl;
     for (int i = 0; i<filas; i++){
-        cout<<i<<" ";
+        cout<<i+1<<" ";
         for (int u = 0; u<columnas; u++ ){
             if (matriz[i][u]=='*'){
                 cant_blancas++;
@@ -93,24 +93,25 @@ void tablero::movimientosposibles(char turnoactual){
                 cant_negras++;
             }
 
-             if(matriz[i][u]=='o'){
+             if(matriz[i][u]== 'o'){
                 bool status=adyacentcelds(i,u,turnoactual);
                 if(status){
-                    cout<<"X"<<" ";
+                    cout<< "| "<<"X"<<" |"<<" ";
                     cantmovimientosposibles++;
                 }else
-                    cout<<'o'<<" ";
+                    cout<<"| "<<'o'<<" |"<<" ";
 
             }
 
             else
-                cout<< matriz[i][u]<< " ";
+                cout<<"| "<< matriz[i][u]<<" |" << " ";
+
         }
-        cout<<i<<" ";
-        cout<< endl;
+        cout<<i+1<<" ";
+        cout<< endl<<endl;
 
     }
-    cout<<"  A B C D E F G H"<<endl;
+    cout<<"    A     B     C     D     E     F     G     H"<<endl;
 
 
 }
@@ -242,6 +243,7 @@ void tablero::insert_piece(player jugador){
         cout<<"ingerese el numero de la fila donde se ubicara la ficha "<<endl;
         cin>>fila;
         fila =validacion_entrada_fila(fila);
+        fila--;
         char color = jugador.getpieza();
         if (columna != -1 && fila != -1){
             if (adyacentcelds(fila,columna,color)&&getvalue(fila,columna)!='0'){

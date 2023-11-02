@@ -77,11 +77,11 @@ void game::nuevapartida()
     }
     if (tablero1.cant_negras> tablero1.cant_blancas){
         winner = usuarionegro.name;
-        score = tablero1.cant_negras;
+        score = to_string(tablero1.cant_negras);
     }
     else {
         winner = usuarioblanco.name;
-        score = tablero1.cant_blancas;
+        score = to_string(tablero1.cant_blancas);
     }
     update_register(usuarionegro.name,usuarioblanco.name,winner,score);
     print_register();
@@ -92,7 +92,7 @@ void game::print_register(){
     registro.open("registros.txt",ios::in | ios::out);
 
     if (!registro) {
-    cout << "No se pudo abrir el archivo." << endl;
+    cout << "Aun no hay registros" << endl;
     }
 
 
@@ -109,18 +109,20 @@ void game::update_register(string player1, string player2, string winner, string
     string new_string = "\n";
     string  hora= hour();
     string fecha = date();
-    new_string= new_string + player1+"    "+ player2+"   " + hora + "  "+ fecha +"   "+ winner +"     "+ score;
+    new_string= new_string +"PLAYER1: "+ player1+"  "+"PLAYER2: " + player2+"  "+"HORA: " + hora + "  "+ "FECHA: "+ fecha +"  "+ "WINNER: "+ winner +"  "+"SCORE: "+ score;
+    ofstream registro("registros.txt", std::ios::out | std::ios::app);
 
-    fstream registro;
-    registro.open("registros.txt",ios::in | ios::out);
 
-    if (!registro) {
-        cout << "No se pudo abrir el archivo." << endl;
+
+    if (registro.is_open()) {
+        registro.seekp(0, ios::end);
+        registro<< new_string<<endl;
+        registro.close();
+
+
+
+
     }
-
-    registro.seekp(0, ios::end);
-    registro<< new_string<<endl;
-    registro.close();
 
 
 }
